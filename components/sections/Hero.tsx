@@ -107,7 +107,6 @@ const CryptoBackground: React.FC = () => {
 
   // Use fixed values to prevent hydration mismatch
   const cryptoElements = React.useMemo(() => {
-    const symbols = ["₿", "Ξ", "₳", "◊", "⟐", "※", "◈", "◇"];
     const positions = [
       { left: 15, top: 20, symbol: "₿", duration: 12, delay: 0 },
       { left: 85, top: 30, symbol: "Ξ", duration: 10, delay: 2 },
