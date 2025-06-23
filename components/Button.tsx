@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   href,
 }) => {
   const baseClasses =
-    "font-semibold rounded-full transition-all duration-300 transform hover:scale-105 inline-block text-center";
+    "font-semibold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 inline-block text-center cursor-pointer";
 
   const variants = {
     primary: "primary-gradient text-black hover:shadow-[var(--shadow-glow)]",
@@ -37,30 +37,31 @@ export const Button: React.FC<ButtonProps> = ({
 
   const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
 
-  const MotionButton = motion.button;
-  const MotionLink = motion.a;
-
   if (href) {
+    // Check if it's an external link or anchor
+    if (
+      href.startsWith("#") ||
+      href.startsWith("http") ||
+      href.startsWith("mailto:")
+    ) {
+      return (
+        <a href={href} className={classes}>
+          {children}
+        </a>
+      );
+    }
+
+    // Use Next.js Link for internal routes
     return (
-      <MotionLink
-        href={href}
-        className={classes}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <Link href={href} className={classes}>
         {children}
-      </MotionLink>
+      </Link>
     );
   }
 
   return (
-    <MotionButton
-      onClick={onClick}
-      className={classes}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <button onClick={onClick} className={classes}>
       {children}
-    </MotionButton>
+    </button>
   );
 };

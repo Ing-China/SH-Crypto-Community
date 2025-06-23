@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 interface CardProps {
   children: React.ReactNode;
@@ -15,7 +14,7 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       className={`
-        glass-card p-6 transition-all duration-300
+        glass-card transition-all duration-300
         ${
           hover
             ? "hover:border-[var(--color-primary)] hover:shadow-[var(--shadow-card)]"

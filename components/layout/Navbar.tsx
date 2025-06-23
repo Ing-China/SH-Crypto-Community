@@ -21,10 +21,10 @@ export const Navbar: React.FC = () => {
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { name: "Events", href: "#events" },
-    { name: "Teams", href: "#teams" },
-    { name: "Partners", href: "#partners" },
-    { name: "Community", href: "#community" },
+    { name: "Events", href: "/events" },
+    { name: "Teams", href: "/teams" },
+    { name: "Partners", href: "/partners" },
+    { name: "Community", href: "/community" },
   ];
 
   const closeMobileMenu = () => {
@@ -56,17 +56,17 @@ export const Navbar: React.FC = () => {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - FIXED: Using Link instead of <a> */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="text-[var(--color-foreground)] hover:text-[var(--color-primary)] transition-colors duration-300 relative group"
                 >
                   {item.name}
                   <div className="absolute -bottom-0.5 left-0 w-0 h-0.5 border-[var(--color-primary)] bg-[var(--color-primary)] group-hover:w-full transition-all duration-300 shadow-[var(--shadow-card)]" />
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -131,47 +131,20 @@ export const Navbar: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Navigation Items */}
+              {/* Navigation Items - FIXED: Using Link instead of <a> */}
               <div className="flex-1 px-6 py-6">
                 <nav className="space-y-1">
                   {navItems.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className="block text-lg font-medium text-[var(--color-foreground)] hover:text-[var(--color-primary)] hover:bg-[var(--color-background-secondary)] transition-all duration-200 py-3 px-4 rounded-lg"
                       onClick={closeMobileMenu}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
-              </div>
-
-              {/* Footer Section */}
-              <div className="px-6 py-6 border-t border-[var(--color-border)]/30">
-                <p className="text-[var(--color-muted)] text-sm mb-3">
-                  Join our community
-                </p>
-                <div className="space-y-2">
-                  <a
-                    href="#"
-                    className="block text-[var(--color-primary)] hover:text-[var(--color-primary-light)] transition-colors text-sm py-1"
-                  >
-                    📱 Telegram
-                  </a>
-                  <a
-                    href="#"
-                    className="block text-[var(--color-primary)] hover:text-[var(--color-primary-light)] transition-colors text-sm py-1"
-                  >
-                    💬 Discord
-                  </a>
-                  <a
-                    href="#"
-                    className="block text-[var(--color-primary)] hover:text-[var(--color-primary-light)] transition-colors text-sm py-1"
-                  >
-                    📘 Facebook
-                  </a>
-                </div>
               </div>
             </div>
           </div>
