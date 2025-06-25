@@ -106,11 +106,11 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">
               What We Offer
             </h2>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-white mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-lg md:text-xl  text-white mb-4 max-w-4xl mx-auto leading-relaxed">
               Discover the comprehensive suite of tools and resources that make
               SH Crypto the premier destination for cryptocurrency enthusiasts.
             </p>

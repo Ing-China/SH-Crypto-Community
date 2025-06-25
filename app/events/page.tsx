@@ -22,6 +22,7 @@ const Events = () => {
       organizer: "SH Crypto Education Team",
       featured: true,
       image: "/images/demo.png",
+      category: "workshop",
     },
     {
       id: 2,
@@ -38,6 +39,7 @@ const Events = () => {
       organizer: "Trading Team",
       featured: true,
       image: "/images/demo.png",
+      category: "trading",
     },
     {
       id: 3,
@@ -53,6 +55,7 @@ const Events = () => {
       price: "Free",
       organizer: "Creative Team",
       image: "/images/demo.png",
+      category: "meetup",
     },
     {
       id: 4,
@@ -68,6 +71,7 @@ const Events = () => {
       price: "Free",
       organizer: "Security Team",
       image: "/images/demo.png",
+      category: "seminar",
     },
     {
       id: 5,
@@ -83,6 +87,7 @@ const Events = () => {
       price: "$50",
       organizer: "Development Team",
       image: "/images/demo.png",
+      category: "workshop",
     },
     {
       id: 6,
@@ -99,13 +104,55 @@ const Events = () => {
       organizer: "SH Crypto Team",
       featured: true,
       image: "/images/demo.png",
+      category: "conference",
+    },
+  ];
+
+  const filterCategories = [
+    { id: "all", label: "All Events", count: events.length },
+    {
+      id: "siemreap",
+      label: "Siem Reap",
+      count: events.filter((e) => e.category === "workshop").length,
+    },
+    {
+      id: "phnompenh",
+      label: "Phnom Penh",
+      count: events.filter((e) => e.category === "trading").length,
     },
   ];
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-crypto-gradient">
-        <div className="container mx-auto">
+      <div className="text-center max-w-4xl mx-auto py-8">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">
+          Events
+        </h2>
+      </div>
+
+      <div className="container mx-auto mb-8">
+        <div className="flex flex-wrap gap-4">
+          {filterCategories.map((category) => (
+            <Button
+              key={category.id}
+              size="sm"
+              variant={category.id === "all" ? "primary" : "secondary"}
+              className={`!py-2 !rounded-xl text-sm !hover:scale-100 !active:scale-100 ${
+                category.id === "all" ? "" : "!bg-gray-600/30 !text-gray-500"
+              }`}
+            >
+              {category.label}
+              <span className="ml-2 text-xs opacity-75">
+                ({category.count})
+              </span>
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Events Grid */}
+      <section className="relative overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {events.map((event) => (
               <Card key={event.id}>
@@ -216,12 +263,13 @@ const Events = () => {
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-8 b">
+      {/* Partner Section */}
+      <section className="py-20 px-6 lg:px-8">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">
             Partner With Us
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-white mb-4 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl  text-white mb-4 max-w-4xl mx-auto leading-relaxed">
             Become our strategic partner and help shape the future of crypto
             education in Cambodia. Collaborate with us to create impactful
             events, expand your brand presence, and connect with a passionate
