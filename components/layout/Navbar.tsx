@@ -45,8 +45,8 @@ export const Navbar: React.FC = () => {
                 <Image
                   src="/images/logo.png"
                   alt="SH Crypto Logo"
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   className="object-contain"
                   priority
                 />
@@ -115,8 +115,8 @@ export const Navbar: React.FC = () => {
                     <Image
                       src="/images/logo.png"
                       alt="SH Crypto Logo"
-                      width={70}
-                      height={70}
+                      width={60}
+                      height={60}
                       className="object-contain"
                     />
                   </div>

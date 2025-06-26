@@ -46,8 +46,8 @@ export const Footer: React.FC = () => {
                 <Image
                   src="/images/logo.png"
                   alt="SH Crypto Logo"
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   className="object-contain"
                 />
               </div>
