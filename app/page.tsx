@@ -40,7 +40,7 @@ const Home = () => {
               What We Offer
             </h2>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xltext-white max-w-4xl mx-auto leading-relaxed">
               Discover the comprehensive suite of tools and resources that make
               SH Crypto the premier destination for cryptocurrency enthusiasts.
             </p>
