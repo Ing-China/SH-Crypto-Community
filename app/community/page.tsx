@@ -220,7 +220,7 @@ const Community = () => {
                     strokeWidth={2}
                     stackId="a"
                   />
-                  <ChartLegend content={<ChartLegendContent />} />
+                  <ChartLegend content={<ChartLegendContent payload={[]} />} />
                 </AreaChart>
               </ChartContainer>
             </CardContent>
