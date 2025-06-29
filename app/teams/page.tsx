@@ -3,7 +3,7 @@ import FoundingCard from "@/components/FoundingCard";
 import { foundingMembers, moderators } from "@/data/teams";
 import ModeratorCard from "@/components/ModeratorCard";
 
-const Teams: React.FC = () => {
+const Teams = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="text-center max-w-4xl mx-auto py-8">

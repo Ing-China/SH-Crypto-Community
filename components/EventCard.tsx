@@ -75,31 +75,40 @@ export const EventCard: React.FC<EventCardProps> = ({ item }) => {
           </div>
         </div>
 
-        <Button
-          variant={
-            item.status === "completed" || item.attendees >= item.maxAttendees
-              ? "secondary"
-              : "primary"
-          }
-          className={`w-full !py-2 !rounded-xl text-sm !hover:scale-100 !active:scale-100 ${
-            item.status === "completed"
-              ? "!bg-gray-600/30 !text-gray-500 !cursor-not-allowed"
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            href={`/events/${item.id}`}
+            className="flex-1 !py-2 !rounded-xl text-sm !hover:scale-100 !active:scale-100"
+          >
+            View Details
+          </Button>
+          <Button
+            variant={
+              item.status === "completed" || item.attendees >= item.maxAttendees
+                ? "secondary"
+                : "primary"
+            }
+            className={`flex-1 !py-2 !rounded-xl text-sm !hover:scale-100 !active:scale-100 ${
+              item.status === "completed"
+                ? "!bg-gray-600/30 !text-gray-500 !cursor-not-allowed"
+                : item.attendees >= item.maxAttendees
+                ? "!bg-orange-500/30 !text-orange-400 !cursor-not-allowed"
+                : ""
+            }`}
+            onClick={
+              item.status === "completed" || item.attendees >= item.maxAttendees
+                ? undefined
+                : () => {}
+            }
+          >
+            {item.status === "completed"
+              ? "Completed"
               : item.attendees >= item.maxAttendees
-              ? "!bg-orange-500/30 !text-orange-400 !cursor-not-allowed"
-              : ""
-          }`}
-          onClick={
-            item.status === "completed" || item.attendees >= item.maxAttendees
-              ? undefined
-              : () => {}
-          }
-        >
-          {item.status === "completed"
-            ? "Event Completed"
-            : item.attendees >= item.maxAttendees
-            ? "Fully Booked"
-            : "Register Now"}
-        </Button>
+              ? "Full"
+              : "Register"}
+          </Button>
+        </div>
       </div>
     </Card>
   );

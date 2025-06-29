@@ -58,10 +58,32 @@ export interface EventCardProps {
     featured?: boolean;
     image: string;
     category: string;
+    sponsors?: string[];
   };
 }
 
 export interface EventCategoryProps {
+  item: {
+    id: number;
+    label: string;
+    count: number;
+  };
+  activeCategory?: number;
+  onCategoryChange: (categoryId: number) => void;
+}
+
+export interface PartnerCardProps {
+  item: {
+    name: string;
+    logo: string;
+    tier: string;
+    sponsorship_count: number;
+    website: string;
+    description: string;
+  };
+}
+
+export interface PartnerCategoryProps {
   item: {
     id: number;
     label: string;

@@ -1,0 +1,158 @@
+"use client";
+import React from "react";
+import { useParams } from "next/navigation";
+import Image from "next/image";
+import { Calendar, Clock, MapPin, Users, DollarSign, User } from "lucide-react";
+import { Button } from "@/components/Button";
+import { PartnerCard } from "@/components/PartnerCard";
+import { eventsData } from "@/data/events";
+import { partnersData } from "@/data/partners";
+import Link from "next/link";
+
+const EventDetail = () => {
+  const params = useParams();
+  const eventId = parseInt(params.id as string);
+  const event = eventsData.find((e) => e.id === eventId);
+
+  if (!event) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-white mb-4">
+            Event not found
+          </h1>
+          <Link href="/events">
+            <Button>Back to Events</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const eventSponsors = partnersData.slice(0, 8);
+
+  return (
+    <div className="min-h-screen bg-black">
+      <div className="relative overflow-hidden">
+        <div className="container mx-auto pt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <span
+                  className={`px-4 py-2 rounded-full text-sm font-medium ${
+                    event.status === "upcoming"
+                      ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                      : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
+                  }`}
+                >
+                  {event.status === "upcoming" ? "Upcoming" : "Completed"}
+                </span>
+                <span className="text-[var(--color-primary)] font-medium">
+                  {event.category}
+                </span>
+              </div>
+
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                {event.title}
+              </h1>
+
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                {event.description}
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Calendar className="text-[var(--color-primary)]" size={20} />
+                  <span>
+                    {new Date(event.date).toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Clock className="text-[var(--color-primary)]" size={20} />
+                  <span>{event.time}</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <MapPin className="text-[var(--color-primary)]" size={20} />
+                  <span>{event.location}</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Users className="text-[var(--color-primary)]" size={20} />
+                  <span>
+                    {event.attendees}/{event.maxAttendees} Attendees
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <DollarSign
+                    className="text-[var(--color-primary)]"
+                    size={20}
+                  />
+                  <span>{event.price}</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <User className="text-[var(--color-primary)]" size={20} />
+                  <span>{event.organizer}</span>
+                </div>
+              </div>
+
+              {event.status === "upcoming" && (
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button className="flex-1">Register Now</Button>
+                </div>
+              )}
+            </div>
+
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm h-80 lg:h-96">
+                <Image
+                  src={event.image}
+                  alt={event.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section className="py-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="text-center pb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">
+              Event Sponsors
+            </h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Special thanks to our amazing sponsors who make this event
+              possible
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {eventSponsors.map((partner, index) => (
+              <PartnerCard key={index} item={partner} />
+            ))}
+          </div>
+
+          <div className="text-center mt-20">
+            <Link href="/partners">
+              <Button>View All Partners</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default EventDetail;

@@ -8,6 +8,8 @@ interface ButtonProps {
   className?: string;
   onClick?: () => void;
   href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -17,6 +19,8 @@ export const Button: React.FC<ButtonProps> = ({
   className = "",
   onClick,
   href,
+  target,
+  rel,
 }) => {
   const baseClasses =
     "font-semibold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 inline-block text-center cursor-pointer";
@@ -26,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
     secondary:
       "bg-[var(--color-background-secondary)] text-[var(--color-foreground)] border border-[var(--color-primary)] hover:shadow-[var(--shadow-glow)]",
     outline:
-      "border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:primary-gradient hover:text-black",
+      "border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-primary-light)]",
   };
 
   const sizes = {
@@ -45,7 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
       href.startsWith("mailto:")
     ) {
       return (
-        <a href={href} className={classes}>
+        <a href={href} className={classes} target={target} rel={rel}>
           {children}
         </a>
       );

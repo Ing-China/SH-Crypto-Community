@@ -12,9 +12,8 @@ export const eventsData = [
     status: "upcoming",
     price: "Free",
     organizer: "SH Crypto Education Team",
-    featured: true,
     image: "/images/demo.png",
-    category: "workshop",
+    category: "Siem Reap",
   },
   {
     id: 2,
@@ -29,9 +28,8 @@ export const eventsData = [
     status: "upcoming",
     price: "$25",
     organizer: "Trading Team",
-    featured: true,
     image: "/images/demo.png",
-    category: "trading",
+    category: "Siem Reap",
   },
   {
     id: 3,
@@ -47,7 +45,7 @@ export const eventsData = [
     price: "Free",
     organizer: "Creative Team",
     image: "/images/demo.png",
-    category: "meetup",
+    category: "Siem Reap",
   },
   {
     id: 4,
@@ -63,7 +61,7 @@ export const eventsData = [
     price: "Free",
     organizer: "Security Team",
     image: "/images/demo.png",
-    category: "seminar",
+    category: "Siem Reap",
   },
   {
     id: 5,
@@ -79,7 +77,7 @@ export const eventsData = [
     price: "$50",
     organizer: "Development Team",
     image: "/images/demo.png",
-    category: "workshop",
+    category: "Siem Reap",
   },
   {
     id: 6,
@@ -94,8 +92,7 @@ export const eventsData = [
     status: "upcoming",
     price: "$75",
     organizer: "SH Crypto Team",
-    featured: true,
     image: "/images/demo.png",
-    category: "conference",
+    category: "Siem Reap",
   },
 ];
