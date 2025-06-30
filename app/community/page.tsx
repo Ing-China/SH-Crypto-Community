@@ -18,7 +18,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export const description = "An interactive area chart";
 
 const chartData = [
   { date: "2024-06-01", shNews: 45, shCommunity: 78, shCryptoLesson: 32 },
