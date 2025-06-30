@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-import { useParams } from "next/navigation";
 import Image from "next/image";
 import { Calendar, Clock, MapPin, Users, DollarSign, User } from "lucide-react";
 import { Button } from "@/components/Button";
@@ -9,9 +7,19 @@ import { eventsData } from "@/data/events";
 import { partnersData } from "@/data/partners";
 import Link from "next/link";
 
-const EventDetail = () => {
-  const params = useParams();
-  const eventId = parseInt(params.id as string);
+export function generateStaticParams() {
+  return eventsData.map((event) => ({
+    id: event.id.toString(),
+  }));
+}
+
+interface EventDetailProps {
+  params: Promise<{ id: string }>;
+}
+
+const EventDetail = async ({ params }: EventDetailProps) => {
+  const { id } = await params;
+  const eventId = parseInt(id);
   const event = eventsData.find((e) => e.id === eventId);
 
   if (!event) {
