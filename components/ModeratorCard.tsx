@@ -17,7 +17,7 @@ const ModeratorCard: React.FC<ModeratorCardProps> = ({ item }) => {
         {/* Image Section - Centered Circular */}
         <div className="flex justify-center pt-8 pb-4">
           <div className="relative">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-3 border-[var(--color-secondary)] shadow-lg">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-3 border-[var(--color-primary)] shadow-lg">
               <Image
                 src={item.image}
                 alt={`${item.name} profile`}
@@ -29,7 +29,7 @@ const ModeratorCard: React.FC<ModeratorCardProps> = ({ item }) => {
             </div>
 
             {/* Gradient Border Effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-secondary-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-md" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-md" />
           </div>
         </div>
 
@@ -37,17 +37,17 @@ const ModeratorCard: React.FC<ModeratorCardProps> = ({ item }) => {
         <div className="p-6 text-center space-y-4">
           {/* Name and Role */}
           <div className="space-y-2">
-            <h3 className="text-lg font-bold text-white group-hover:text-[var(--color-secondary)] transition-colors duration-200">
+            <h3 className="text-lg font-bold text-white  transition-colors duration-200">
               {item.name}
             </h3>
-            <p className="text-xs font-medium text-[var(--color-secondary)] uppercase tracking-wide">
+            <p className="text-xs font-medium text-[var(--color-primary)] uppercase tracking-wide">
               {item.role}
             </p>
           </div>
 
           {/* Social Links */}
           {socialLinks.length > 0 && (
-            <div className="flex justify-center gap-3 pt-4 border-t border-[var(--color-secondary)]">
+            <div className="flex justify-center gap-3 pt-4 border-t border-[var(--color-primary)]">
               {socialLinks.map((link) => {
                 const IconComponent = link.icon;
                 return (
