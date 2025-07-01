@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useMemo } from "react";
-import { MessageSquare } from "lucide-react";
-import { Button } from "@/components/Button";
 import { EventCard } from "@/components/EventCard";
 import { EventCategoryFilter } from "@/components/EventCategoryFilter";
 import { eventsData } from "@/data/events";
