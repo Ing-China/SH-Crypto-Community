@@ -4,7 +4,9 @@ export interface CommunityStatsCardProps {
     platform: string;
     members: number;
     icon: string;
+    platformType: string;
     joinUrl: string;
+    badge: string;
   };
 }
 
@@ -51,11 +53,7 @@ export interface EventCardProps {
     location: string;
     description: string;
     attendees: number;
-    maxAttendees: number;
-    status: string;
-    price: string;
-    organizer: string;
-    featured?: boolean;
+    organizers: string[];
     image: string;
     category: string;
     sponsors?: string[];

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/Button";
 import { PartnerCard } from "@/components/PartnerCard";
@@ -9,6 +9,21 @@ import { partnerCategoriesData } from "@/data/partnerCategories";
 
 const Partners = () => {
   const [activeCategory, setActiveCategory] = useState(1);
+
+  const filteredPartners = useMemo(() => {
+    if (activeCategory === 1) {
+      return partnersData;
+    }
+
+    const selectedCategory = partnerCategoriesData.find(
+      (cat) => cat.id === activeCategory
+    );
+    if (!selectedCategory) return partnersData;
+
+    return partnersData.filter(
+      (partner) => partner.category === selectedCategory.label
+    );
+  }, [activeCategory]);
 
   return (
     <div className="min-h-screen bg-black">
@@ -34,7 +49,7 @@ const Partners = () => {
       <section className="relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {partnersData.map((partner, index) => (
+            {filteredPartners.map((partner, index) => (
               <PartnerCard key={index} item={partner} />
             ))}
           </div>
@@ -53,7 +68,11 @@ const Partners = () => {
             community of blockchain enthusiasts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="!flex !flex-row !items-center !justify-center !space-x-2">
+            <Button
+              href="https://t.me/senghour18"
+              target="_blank"
+              className="!flex !flex-row !items-center !justify-center !space-x-2"
+            >
               <MessageSquare size={20} />
               <span>Become a Partner</span>
             </Button>

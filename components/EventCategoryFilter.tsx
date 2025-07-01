@@ -19,7 +19,7 @@ export const EventCategoryFilter: React.FC<EventCategoryProps> = ({
       onClick={() => onCategoryChange(item.id)}
     >
       {item.label}
-      <span className="ml-2 text-xs opacity-75">({item.count})</span>
+      <span className="ml-2 text-xs">({item.count})</span>
     </Button>
   );
 };

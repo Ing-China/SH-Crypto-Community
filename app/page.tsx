@@ -25,7 +25,7 @@ const Home = () => {
               share, and grow together.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-7xl mx-auto pb-12 sm:pb-16 lg:pb-20">
               {communityStatsData.map((stat) => (
                 <CommunityStatsCard key={stat.id} item={stat} />
               ))}
@@ -33,7 +33,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-dark-900 to-black">
+      <section className="pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-b from-dark-900 to-black">
         <div className="container mx-auto px-4">
           <div className="text-center pb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] text-transparent bg-clip-text">

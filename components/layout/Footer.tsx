@@ -1,41 +1,39 @@
 import React from "react";
 import Image from "next/image";
-import { Facebook, Github, MessageCircle } from "lucide-react";
+import Link from "next/link";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const aboutLinks = [
-    { name: "Events", href: "#events" },
-    { name: "Our Teams", href: "#teams" },
-    { name: "Our Members", href: "#members" },
+    { name: "Events", href: "/events" },
+    { name: "Teams", href: "/teams" },
+    { name: "Community", href: "/community" },
   ];
 
-  const resourceLinks = [
-    { name: "Our Partners", href: "#partners" },
-    { name: "Support Us", href: "#support" },
-  ];
+  const resourceLinks = [{ name: "Partners", href: "/partners" }];
 
   const socialLinks = [
     {
-      name: "Facebook Group",
-      href: "#",
-      icon: Facebook,
+      name: "SH News",
+      href: "https://t.me/shcryptonews",
     },
     {
-      name: "Join Discord",
-      href: "#",
-      icon: MessageCircle,
+      name: "Community Chat",
+      href: "https://t.me/+bPccAJZxQ0c1YjBl",
     },
     {
-      name: "GitHub",
-      href: "#",
-      icon: Github,
+      name: "Crypto Lesson",
+      href: "https://t.me/Shcryptolesson",
+    },
+    {
+      name: "Facebook Page",
+      href: "https://www.facebook.com/profile.php?id=61575519645004",
     },
   ];
 
   return (
-    <footer className="bg-black text-white py-16 border-t border-[var(--color-primary)]">
+    <footer className="bg-black text-white pt-16 border-t border-[var(--color-primary)]">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -59,25 +57,6 @@ export const Footer: React.FC = () => {
               Cambodia&apos;s largest community of crypto enthusiasts and
               blockchain developers building the future together.
             </p>
-            {/* Social Icons */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const IconComponent = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-[var(--color-primary)] transition-colors duration-300 group"
-                    aria-label={social.name}
-                  >
-                    <IconComponent
-                      size={20}
-                      className="text-gray-400 group-hover:text-white transition-colors duration-300"
-                    />
-                  </a>
-                );
-              })}
-            </div>
           </div>
 
           {/* About Us Section */}
@@ -86,12 +65,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4">
               {aboutLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,12 +82,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4">
               {resourceLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -120,12 +99,23 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4">
               {socialLinks.map((social) => (
                 <li key={social.name}>
-                  <a
-                    href={social.href}
-                    className="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
-                  >
-                    {social.name}
-                  </a>
+                  {social.href.startsWith("http") ? (
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
+                    >
+                      {social.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={social.href}
+                      className="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
+                    >
+                      {social.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -133,28 +123,12 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[var(--color-primary)] mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="border-t border-[var(--color-primary)] mt-16 py-6">
+          <div className="flex justify-center items-center">
             {/* Copyright */}
             <p className="text-gray-500 text-sm">
               © {currentYear} SH Crypto. All rights reserved.
             </p>
-
-            {/* Additional Links */}
-            <div className="flex space-x-6">
-              <a
-                href="#privacy"
-                className="text-gray-500 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#terms"
-                className="text-gray-500 hover:text-[var(--color-primary)] transition-colors duration-300 text-sm"
-              >
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>

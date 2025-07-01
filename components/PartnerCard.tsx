@@ -10,34 +10,30 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({ item }) => {
   return (
     <Card>
       <div
-        className="relative h-48 w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-800/50 to-gray-900/50"
+        className="relative h-48 w-full overflow-hidden flex items-center justify-center"
         style={{
           borderTopLeftRadius: "var(--radius-card)",
           borderTopRightRadius: "var(--radius-card)",
         }}
       >
-        <div className="relative w-32 h-32">
+        <div className="relative w-45 h-45">
           <Image
             src={item.logo}
             alt={`${item.name} logo`}
             fill
-            className="object-contain transition-transform duration-300 hover:scale-110"
+            className="object-contain"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
         <div className="absolute top-4 right-4">
-          <span className="px-3 py-1 rounded-full text-xs font-medium border bg-yellow-500/30 text-yellow-300 border-yellow-500/50">
+          <span className="px-3 py-1 rounded-full text-xs font-medium border bg-[var(--color-primary)] text-white">
             {item.tier}
           </span>
-        </div>
-
-        <div className="absolute bottom-1 left-4 right-4">
-          <h3 className="text-lg font-bold text-white mb-1">{item.name}</h3>
         </div>
       </div>
 
       <div className="p-4">
+        <h3 className="text-lg font-bold text-white mb-2">{item.name}</h3>
         <p className="text-gray-300 text-sm mb-4 line-clamp-2">
           {item.description}
         </p>
